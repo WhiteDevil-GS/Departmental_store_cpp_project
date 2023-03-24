@@ -1,0 +1,181 @@
+#include<iostream>
+
+using namespace std;
+
+
+int main() {
+    float sum =0,q,count =0;
+    float a=0,o=0,g=0,m=0;
+    string c ="Y",code;
+    cout<<"     Code\t\tItem         Cost Per/Kg\n"
+          "-----------------------------------------------\n"
+          "     E001\t\tApple            100  \n"
+          "     E002\t\tOrange           200  \n"
+          "     E003\t\tGrapes           250  \n"
+          "     E004\t\tMango            159  \n";
+
+    while(c == "Y"){
+        cout<<"\nEnter Item code or Type exit to quit adding \n  ----->>>>  ";
+        cin>>code;
+        if((code!="E001") and (code!="E002") and (code!="E003") and (code!="E004") and (code!="exit") and (code!="Exit")){
+            cout<<"Code Does not Exists\n *Please Select Valid code\n";
+        }
+        if (code == "E001"){
+            cout<<"Determine the Quantity of Apple in KG : \n --> ";
+            cin>>q;
+            if(bool(float(q))==1){
+                sum += 100*q;
+                count++;
+                a = a+q;
+            }
+            else{
+                cout<<"Invalid Selection";
+                break;
+            }
+
+        }
+        if (code == "E002"){
+            cout<<"Determine the Quantity of Orange in KG : \n --> ";
+            cin>>q;
+            if(bool(float(q))==1){
+
+                sum += 200*q;
+                count++;
+                o = o+q;
+            }
+            else{
+                cout<<"Invalid Selection";
+                break;
+            }
+
+        }
+        if (code == "E003"){
+            cout<<"Determine the Quantity of Grapes in KG : \n --> ";
+            cin>>q;
+            if(bool(float(q))==1){
+
+                sum += 250*q;
+                count++;
+                g = g+q;
+            }
+            else{
+                cout<<"Invalid Selection";
+                break;
+            }
+        }
+        if (code == "E004"){
+            cout<<"Determine the Quantity of Mango in KG : \n --> ";
+            cin>>q;
+            if(bool(float(q))==1){
+
+                sum += 159*q;
+                m = m+q;
+                count++;
+            }
+            else{
+                cout<<"Invalid Selection";
+                break;
+            }
+        }
+        if ((code == "Exit") or (code == "exit")){
+            if(count>=1){
+                cout<<"Do you want to Delete any Items Select Y \nElse Press Any Key to Continue: \n - ";
+                cin>>c;
+                if(c == "Y"){
+                    while (c == "Y" and sum>0){
+                        cout<<"\nEnter Item code to delete or exit to quit to delete item: \n ----->>>> ";
+                        cin>>code;
+                        if ((code == "E001") and (a!=0)) {
+                            cout<<"Enter The Quantity to delete: \n";
+                            cin>>q;
+                            if(a>=q){
+                                sum -= q*100;
+                            }
+                            else{
+                                cout<<"In first you have selected Apple of :\t"<<a<<"\n";
+                            }
+                        }
+                        if ((code == "E002") and (o!=0)){
+                            cout<<"Enter The Quantity to delete: \n";
+                            cin>>q;
+                            if(o>=q){
+                                sum -= q*100;
+                            }
+                            else{
+                                cout<<"In first you have selected Orange of :\t"<<o<<"\n";
+                            }
+                        }
+                        if ((code == "E003") and (g!=0)){
+                            cout<<"Enter The Quantity to delete: \n";
+                            cin>>q;
+                            if(g>=q){
+                                sum -= q*100;
+                            }
+                            else{
+                                cout<<"In first you have selected Grapes of :\t"<<g<<"\n";
+                            }
+                        }
+                        if ((code == "E004") and (m!=0)){
+                            cout<<"Enter The Quantity to delete: \n";
+                            cin>>q;
+                            if(m>=q){
+                                sum -= q*100;
+                            }
+                            else{
+                                cout<<"In first you have selected Mango of :\t"<<m<<"\n";
+                            }
+                        }
+                        if (code == "exit"){
+                            cout<<"Do you want to Add any Items Select Y \n   Else Press Any Key to Continue: \n - ";
+                            cin>>c;
+                            break;
+                        }
+                        else{
+                            cout<<"You have not selected These items --\n";
+                            if(a==0){
+                                cout<<"\n **  Apple\n";
+                            }
+                            if(o==0){
+                                cout<<"\n **  Orange\n";
+                            }
+                            if(m==0){
+                                cout<<"\n **  Mango\n";
+                            }
+                            if(g==0){
+                                cout<<"\n **  Grapes\n";
+                            }
+                        }
+                    }
+            }
+
+
+            }
+            else{
+                break;
+            }
+
+        }
+
+    }
+    if(count>0){
+        int i=0;
+        cout<<"\n\nSl.no\tItem Name\tQ.ty in KG\t Cost\n";
+        if(a>0){
+            cout<<" "<<++i<<"\t\tApple\t\t"<<a<<"\t\t\t\b"<<a*100<<"\n";
+        }
+        if(o>0){
+            cout<<" "<<++i<<"\t\tOrange\t\t"<<o<<"\t\t\t\b"<<o*200<<"\n";
+        }
+        if(g>0){
+            cout<<" "<<++i<<"\t\tGrapes\t\t"<<g<<"\t\t\t\b"<<g*250<<"\n";
+        }
+        if(m>0){
+            cout<<" "<<++i<<"\t\tMango\t\t"<<m<<"\t\t\t\b"<<m*159<<"\n";
+        }
+        cout<<"----------------------------------------------------------";
+        cout<<"\nTotal Billing Amount------\t\t\t"<<sum<<"Rs\n\n";
+    }
+    else{
+        cout<<"\n****************  Thank You Visit Again  ****************\n\n";
+    }
+   }
